@@ -1029,7 +1029,9 @@ frappe.chat.sound.play  = function (name, volume = 0.1) {
 
 	frappe.log.info('Playing sound.')
 	$audio.attr('src', `${frappe.chat.sound.PATH}/chat-${name}.mp3`)
-	$audio[0].play()
+	$audio.on("canplay",function(){
+		$audio[0].play()
+	 })
 }
 frappe.chat.sound.PATH  = '/assets/frappe/sounds'
 
